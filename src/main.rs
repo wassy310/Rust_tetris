@@ -11,7 +11,7 @@ enum BlockKind {
 
 type BlockShape = [[usize; 4]; 4];
 const BLOCKS: [BlockShape; 7] = [
- // I
+    // I
     [
         [0, 0, 0, 0],
         [0, 0, 0, 0],
