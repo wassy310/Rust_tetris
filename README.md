@@ -20,11 +20,7 @@ You can learn the following points
 |  :-:   | -------------------------------------- |
 | OS     | Windows 10 Pro                         |
 | IDE    | Visual Studio Code                     |
-| SDK    |                                        |
 | OTHERS |                                        |
-
-## Packages
-- 
 
 ## Author
 [Wassy | Ryoga Washizawa](https://github.com/wassy310)
