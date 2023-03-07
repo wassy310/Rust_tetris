@@ -111,6 +111,13 @@ fn main() {
     ];
 
     let mut field_buf = field;
+    for y in 0..4 {
+        for x in 0..4 {
+            if block[y][x] == 1 {
+                field_buf[y+8][x+4] = 1;
+            }
+        }
+    }
 
     let mut pos = Position {
         x: 4,
