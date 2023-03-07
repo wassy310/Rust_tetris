@@ -1,79 +1,13 @@
+mod block;
+
 use std::sync::{Arc,  Mutex};
 use std::{thread,  time};
 use getch_rs::{Getch,  Key};
-use rand::{
-    distributions::{Distribution,  Standard},
-    Rng,
-};
+use block::{BlockKind, BLOCKS};
 
 const FIELD_WIDTH:  usize = 11 + 2;
 const FIELD_HEIGHT: usize = 20 + 1;
 type Field = [[usize; FIELD_WIDTH]; FIELD_HEIGHT];
-
-#[derive(Clone,  Copy)]
-enum BlockKind {
-    I, O, S, Z, J, L, T,
-}
-
-impl Distribution<BlockKind> for Standard {
-    fn sample<R: Rng + ?Sized>(&self,  rng: &mut R) -> BlockKind {
-        match rng.gen_range(0..=6) {
-            0 => BlockKind::I,
-            1 => BlockKind::O,
-            2 => BlockKind::S,
-            3 => BlockKind::Z,
-            4 => BlockKind::J,
-            5 => BlockKind::L,
-            _ => BlockKind::T,
-        }
-    }
-}
-
-type BlockShape = [[usize; 4]; 4];
-const BLOCKS: [BlockShape; 7] = [
-    [
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-        [1, 1, 1, 1],
-        [0, 0, 0, 0],
-    ],
-    [
-        [0, 0, 0, 0],
-        [0, 1, 1, 0],
-        [0, 1, 1, 0],
-        [0, 0, 0, 0],
-    ],
-    [
-        [0, 0, 0, 0],
-        [0, 1, 1, 0],
-        [1, 1, 0, 0],
-        [0, 0, 0, 0],
-    ],
-    [
-        [0, 0, 0, 0],
-        [1, 1, 0, 0],
-        [0, 1, 1, 0],
-        [0, 0, 0, 0],
-    ],
-    [
-        [0, 0, 0, 0],
-        [1, 0, 0, 0],
-        [1, 1, 1, 0],
-        [0, 0, 0, 0],
-    ],
-    [
-        [0, 0, 0, 0],
-        [0, 0, 1, 0],
-        [1, 1, 1, 0],
-        [0, 0, 0, 0],
-    ],
-    [
-        [0, 0, 0, 0],
-        [0, 1, 0, 0],
-        [1, 1, 1, 0],
-        [0, 0, 0, 0],
-    ],
-];
 
 struct Position {
     x: usize,
