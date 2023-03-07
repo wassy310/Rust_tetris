@@ -79,6 +79,13 @@ fn is_collision(field: &Field, pos: &Position, block: BlockKind) -> bool {
 }
 
 fn main() {
+    let block =[
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [1, 1, 1, 1],
+        [0, 0, 0, 0],
+    ];
+
     let field = [
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
@@ -102,6 +109,8 @@ fn main() {
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     ];
+
+    let mut field_buf = field;
 
     let mut pos = Position {
         x: 4,
